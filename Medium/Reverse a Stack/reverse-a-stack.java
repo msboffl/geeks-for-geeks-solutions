@@ -44,23 +44,25 @@ class GFG
 //User function Template for Java
 
 class Solution
-{ 
-    public static void InsertAtBottom(Stack<Integer> stack, int elem){
-        if(stack.size() == 0){
-            stack.push(elem);
-            return ;
+{
+    public static void insertIntoStack(Stack<Integer> s, int value) {
+        if(s.isEmpty()) {
+            s.push(value);
+            return;
+        } else {
+            int temp = s.pop();
+			insertIntoStack(s,value);
+			s.push(temp);
         }
-        int pop = stack.pop();
-        InsertAtBottom(stack, elem);
-        stack.push(pop);
+        
     }
-    static void reverse(Stack<Integer> stack)
+    public static void reverse(Stack<Integer> s)
     {
-        if(stack.size() == 0){
-            return ;
+        if(!s.isEmpty()) {
+            int value = s.pop();
+            reverse(s);
+            insertIntoStack(s, value);
         }
-        int pop = stack.pop();
-        reverse(stack);
-        InsertAtBottom(stack, pop);
+        // add your code here
     }
 }
