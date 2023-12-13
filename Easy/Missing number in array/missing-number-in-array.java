@@ -29,12 +29,16 @@ class GFG {
 
 class Solution {
     int missingNumber(int array[], int n) {
+        Arrays.sort(array);
+        
+        if(n < 2) {
+            return n == 0 ? 0 : 1;
+        }
+        for(int i = 0; i < n-1; i++) {
+            if(i + 1 != array[i]) return i+1;
+        }
+        
+        return n;
         // Your Code Here
-        int rsum=((n+1)*n)/2;
-        int sum=0;
-        for(int i=0;i<array.length;i++){
-            sum=sum+array[i];
-                    }
-        return rsum-sum;
     }
 }
